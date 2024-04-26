@@ -246,7 +246,8 @@ namespace Loyc.Math
 		public <#=T#> Abs() { return Prescaled(N >= 0 ? N : -N); }
 
 		public <#=T#> Floor() { return Prescaled(N & ~Mask); }
-		public <#=T#> Ceiling()  { return Prescaled((N & ~Mask) + Unit); }
+		public <#=T#> Ceiling()  { return Prescaled((N + (Unit - 1)) & ~Mask); }
+        [MethodImpl((MethodImplOptions)0x100)]
 
 		public int CountOnes() { return MathEx.CountOnes(N); }
 		public int Log2Floor()
